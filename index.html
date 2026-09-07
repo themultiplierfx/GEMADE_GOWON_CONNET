@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemade/Giwon Estate Connect</title>
+
+  <style>
+    :root{
+      --brand:#004aad;
+      --brand-dark:#00367d;
+      --accent:#ff8c00;
+      --bg:#f4f7f9;
+      --text:#333;
+      --card:#ffffff;
+      --border:#dfe7ee;
+      --shadow: 0 6px 16px rgba(0,0,0,.08);
+      --radius: 14px;
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+
+    body{
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* HEADER */
+    header{
+      background: linear-gradient(135deg, var(--brand), #0b5fbf);
+      color:#fff;
+      padding: 22px 16px;
+      text-align:center;
+    }
+    header h1{
+      font-size: 22px;
+      letter-spacing: .2px;
+    }
+    header p{
+      font-size: 12.5px;
+      margin-top: 6px;
+      opacity: .95;
+    }
+
+    /* LAYOUT */
+    .container{
+      padding: 24px 16px;
+      max-width: 620px;
+      margin: auto;
+    }
+
+    /* MAIN BUTTONS */
+    .main-actions{
+      margin-top: 8px;
+    }
+
+    .main-btn{
+      display:block;
+      width:100%;
+      background:#fff;
+      color: var(--brand);
+      padding: 16px 14px;
+      margin: 12px 0;
+      border-radius: var(--radius);
+      text-align:center;
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration:none;
+      border: 2px solid var(--brand);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      transition: transform .08s ease, background .15s ease, color .15s ease;
+    }
+    .main-btn:hover{ 
+      background: var(--brand);
+      color:#fff;
+      transform: translateY(-1px);
+    }
+    .main-btn:active{ transform: translateY(0px); }
+    .main-btn:focus{
+      outline: 3px solid rgba(0, 74, 173, .35);
+      outline-offset: 2px;
+    }
+
+    .join-btn{
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      box-shadow: 0 6px 18px rgba(255,140,0,.25);
+    }
+    .join-btn:hover{
+      background: #e87f00;
+    }
+
+    /* CATEGORIES GRID */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .cat-btn{
+      background: var(--card);
+      padding: 16px 12px;
+      border-radius: 12px;
+      text-align:center;
+      font-size: 14.5px;
+      text-decoration:none;
+      color: var(--text);
+      border: 1px solid #e7eef5;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+      transition: background .15s ease, border-color .15s ease, transform .08s ease;
+      font-weight: 700;
+    }
+    .cat-btn:hover{
+      background: #eaf2ff;
+      border-color: #cfe0ff;
+      transform: translateY(-1px);
+    }
+    .cat-btn:focus{
+      outline: 3px solid rgba(0, 74, 173, .25);
+      outline-offset: 2px;
+    }
+
+    /* DISCLAIMER POPUP */
+    .popup{
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      display:none; /* enable via JS */
+      align-items:center;
+      justify-content:center;
+      padding: 16px;
+      z-index: 9999;
+    }
+    .popup.show{ display:flex; }
+
+    .popup-content{
+      width:100%;
+      max-width: 420px;
+      background:#fff;
+      border-radius: 14px;
+      padding: 22px 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      text-align:center;
+    }
+
+    .popup-content h2{
+      color: #d32f2f;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .popup-content p{
+      color:#333;
+      font-size: 13.5px;
+      margin-bottom: 16px;
+    }
+
+    .popup-actions{
+      display:flex;
+      gap: 10px;
+      justify-content:center;
+      flex-wrap: wrap;
+    }
+
+    .popup-content button{
+      cursor:pointer;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-weight: 800;
+      border: 0;
+      transition: transform .08s ease, filter .15s ease;
+    }
+
+    .btn-primary{
+      background: var(--brand);
+      color:#fff;
+      min-width: 140px;
+    }
+    .btn-primary:hover{ filter: brightness(1.05); }
+    .btn-primary:active{ transform: translateY(1px); }
+
+    .btn-secondary{
+      background: #f1f5f9;
+      color:#111827;
+      border: 1px solid #e5edf5;
+      min-width: 140px;
+    }
+    .btn-secondary:hover{
+      background:#e9f0f8;
+    }
+
+    /* SMALL FOOTER TEXT (optional) */
+    .fineprint{
+      margin-top: 14px;
+      font-size: 11.5px;
+      opacity: .75;
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Gemade/Giwon Estate Connect</h1>
+    <p>Quick access to categories & important notices</p>
+  </header>
+
+  <main class="container">
+    <div class="main-actions">
+      <a class="main-btn join-btn" href="#" aria-label="Join now">Join Now</a>
+      <a class="main-btn" href="#" aria-label="View listings">View Listings</a>
+    </div>
+
+    <section class="grid" aria-label="Categories">
+      <a class="cat-btn" href="#">Apartments</a>
+      <a class="cat-btn" href="#">Villas</a>
+      <a class="cat-btn" href="#">Townhomes</a>
+      <a class="cat-btn" href="#">Land</a>
+    </section>
+
+    <div class="fineprint">
+      Please review the disclaimer before continuing.
+    </div>
+  </main>
+
+  <!-- DISCLAIMER POPUP -->
+  <div class="popup" id="disclaimerPopup" role="dialog" aria-modal="true" aria-labelledby="disclaimerTitle">
+    <div class="popup-content">
+      <h2 id="disclaimerTitle">Important Notice</h2>
+      <p>
+        This site may display third-party listings. Always verify details before making decisions.
+      </p>
+      <div class="popup-actions">
+        <button class="btn-secondary" type="button" onclick="closePopup()">Cancel</button>
+        <button class="btn-primary" type="button" onclick="acceptPopup()">I Understand</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const popup = document.getElementById('disclaimerPopup');
+
+    function openPopup(){
+      popup.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePopup(){
+      popup.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    function acceptPopup(){
+      // TODO: put your logic here (e.g., store accepted flag, redirect, etc.)
+      closePopup();
+      alert("Thanks! You can continue now.");
+    }
+
+    // Example: open popup after load (optional)
+    window.addEventListener('load', () => {
+      // openPopup();
+    });
+
+    // Close popup on overlay click
+    popup.addEventListener('click', (e) => {
+      if(e.target === popup) closePopup();
+    });
+
+    // Close popup with ESC
+    window.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') closePopup();
+    });
+  </script>
+</body>
+</html>
